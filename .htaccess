@@ -1,0 +1,16 @@
+RewriteEngine On
+
+RewriteBase /zilaweb-new/
+
+# Redirect index.php menjadi /
+RewriteCond %{THE_REQUEST} /index\.php [NC]
+RewriteRule ^index\.php$ /zilaweb-new/ [R=301,L]
+
+# Hilangkan .php dari URL
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.php[\s?] [NC]
+RewriteRule ^ /zilaweb-new/%1 [R=301,L]
+
+# Jalankan file php tanpa ekstensi
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^\.]+)$ $1.php [L]
