@@ -7,9 +7,19 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="author" content="Sarab">
-      <meta name="description" content="Sarab - Fast Food & Restaurant HTML Template">
-      <title>ZilaWeb</title>
+
+      <title>Panduan Order - ZilaWeb</title>
+
+      <meta name="title" content="Panduan Order">
+      <meta name="description" content="Temukan panduan, tutorial, order dan proses pembuatan website, pengembangan web dari ZilaWeb.">
+      <meta name="keywords" content="panduan website, tutorial website, pengembangan web, pemrograman web, teknologi, ZilaWeb, website, alur buat website">
+      <meta name="robots" content="index, follow">
+      <meta name="author" content="ZilaWeb">
+
+      <link rel="icon" href="./assets/images/zilaweb-fav-32.png" sizes="32x32" type="image/png">
+      <link rel="icon" href="./assets/images/zilaweb-fav-192.png" sizes="192x192" type="image/png">
+      <link rel="apple-touch-icon" href="./assets/images/zilaweb-fav-192.png">
+
       <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet"/>
       <!-- Bootstrap 5.3 -->
       <link href="css/bootstrap.min.css" rel="stylesheet"/>
@@ -106,38 +116,54 @@
                <div class="tli">
                   <div class="tl-left">
                      <div class="tlyear">4.</div>
-                     <h5>Proses Pembayaran</h5>
-                     <p>Anda akan diarahkan kembali ke admin WhatsApp untuk proses pembayaran dan konfirmasi pesanan termasuk nama domain web yang diinginkan.</p>
+                     <h5>Mengisi Form Pemesanan</h5>
+                     <p>Pada halaman form pemesanan terdapat detail order web anda dan diharuskan mengisi form untuk lanjut ke pembayaran.</p>
                   </div>
                   <div class="tl-center">
                      <div class="tldot"></div>
                   </div>
                   <div class="tl-right">
                      <div class="tlyear">4.</div>
-                     <h5>Proses Pembayaran</h5>
-                     <p>Anda akan diarahkan kembali ke admin WhatsApp untuk proses pembayaran dan konfirmasi pesanan termasuk nama domain web yang diinginkan.</p>
+                     <h5>Mengisi Form Pemesanan</h5>
+                     <p>Pada halaman form pemesanan terdapat detail order web anda dan diharuskan mengisi form untuk lanjut ke pembayaran.</p>
                   </div>
                </div>
 
                <div class="tli">
                   <div class="tl-left">
                      <div class="tlyear">5.</div>
-                     <h5>Proses Pengerjaan</h5>
-                     <p>Admin akan mengarahkan untuk mendiskusikan kebutuhan, fitur, dan detail website bersama tim developer kami.</p>
+                     <h5>Proses Pembayaran</h5>
+                     <p>Anda akan mendapatkan nomor invoice dan diarahkan untuk konfirmasi ke admin zilaweb via WhatsApp untuk proses pembayaran dan konfirmasi pemesanan.</p>
                   </div>
                   <div class="tl-center">
                      <div class="tldot"></div>
                   </div>
                   <div class="tl-right">
                      <div class="tlyear">5.</div>
-                     <h5>Proses Pengerjaan</h5>
-                     <p>Admin akan mengarahkan untuk mendiskusikan kebutuhan, fitur, dan detail website bersama tim developer kami.</p>
+                      <h5>Proses Pembayaran</h5>
+                     <p>Anda akan mendapatkan nomor invoice dan diarahkan untuk konfirmasi ke admin zilaweb via WhatsApp untuk proses pembayaran dan konfirmasi pemesanan.</p>
                   </div>
                </div>
 
                <div class="tli">
                   <div class="tl-left">
                      <div class="tlyear">6.</div>
+                     <h5>Proses Pengerjaan</h5>
+                     <p>Setelah pembayaran di konfirmasi, admin akan mengarahkan untuk mendiskusikan kebutuhan, fitur, dan detail website bersama tim developer kami.</p>
+                  </div>
+                  <div class="tl-center">
+                     <div class="tldot"></div>
+                  </div>
+                  <div class="tl-right">
+                     <div class="tlyear">6.</div>
+                     <h5>Proses Pengerjaan</h5>
+                     <p>Setelah pembayaran di konfirmasi, admin akan mengarahkan untuk mendiskusikan kebutuhan, fitur, dan detail website bersama tim developer kami.</p>
+                  </div>
+               </div>
+
+               <div class="tli">
+                  <div class="tl-left">
+                     <div class="tlyear">7.</div>
                      <h5>Website Selesai dan Online</h5>
                      <p>Website selesai dikerjakan, dilakukan pengecekan, dan siap digunakan atau dipublikasikan.</p>
                   </div>
@@ -145,7 +171,7 @@
                      <div class="tldot"></div>
                   </div>
                   <div class="tl-right">
-                     <div class="tlyear">6.</div>
+                     <div class="tlyear">7.</div>
                      <h5>Website Selesai dan Online</h5>
                      <p>Website selesai dikerjakan, dilakukan pengecekan, dan siap digunakan atau dipublikasikan.</p>
                   </div>

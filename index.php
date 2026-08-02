@@ -1,5 +1,7 @@
 <?php 
    include("./koneksi.php");
+   $get_paket = mysqli_query($conn, "SELECT * FROM template_web WHERE status = 'aktif' order by id DESC LIMIT 3");
+   $jumlah_template = mysqli_num_rows($get_paket);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,9 +9,26 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="author" content="Sarab">
-      <meta name="description" content="Sarab - Fast Food & Restaurant HTML Template">
-      <title>ZilaWeb</title>
+      
+      <title>ZilaWeb - Jasa Pembuatan Website Cepat & Murah</title>
+
+      <meta name="title" content="ZilaWeb - Jasa Pembuatan Website Cepat & Murah">
+      <meta name="description" content="ZilaWeb menyediakan jasa pembuatan website profesional untuk UMKM, company profile, toko online, dan e-katalog. Banyak pilihan template web bisa dipilih">
+      <meta name="keywords" content="jasa pembuatan website, jasa website murah, bikin website UMKM, jasa website company profile, jasa toko online">
+      <meta name="robots" content="index, follow">
+      <meta name="author" content="ZilaWeb">
+
+      <link rel="icon" href="./assets/images/zilaweb-fav-32.png" sizes="32x32" type="image/png">
+      <link rel="icon" href="./assets/images/zilaweb-fav-192.png" sizes="192x192" type="image/png">
+      <link rel="apple-touch-icon" href="./assets/images/zilaweb-fav-192.png">
+
+      <meta property="og:title" content="ZilaWeb - Jasa Pembuatan Website Cepat & Murah">
+      <meta property="og:description" content="Jasa pembuatan website untuk UMKM, company profile, toko online dan lainnya. Cepat, murah, dan profesional.">
+      <meta property="og:url" content="https://zilaweb.com">
+      <meta property="og:type" content="website">
+      <meta property="og:image" content="https://zilaweb.com/assets/images/preview.png">
+
+
       <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet"/>
       <!-- Bootstrap 5.3 -->
       <link href="css/bootstrap.min.css" rel="stylesheet"/>
@@ -26,7 +45,7 @@
 
       <style>
          .chexp {
-            display: flex;
+            /* display: flex; */
             align-items: center;
             gap: 10px; /* jarak icon ke teks */
             margin-bottom: 10px;
@@ -36,6 +55,17 @@
             min-width: 20px;
             text-align: center;
          }
+         @media (max-width: 768px) {
+            .atas {
+               display: none;
+            }
+            .fcard {
+               margin-top: 50px;
+            }
+            .btn-mulai {
+               margin-bottom: 40px;
+            }
+        }
       </style>
    </head>
    <body>
@@ -45,7 +75,7 @@
          <div class="hs hs1"></div>
          <!-- <div class="hs hs2"></div> -->
          <div class="container">
-            <div class="row align-items-center g-5" style="min-height: 88vh;">
+            <div class="row align-items-center" style="min-height: 88vh;">
                <div class="col-lg-6">
                   <div class="hbadge">
                      <div class="hbi"><i class="fas fa-code"></i></div>
@@ -58,7 +88,7 @@
                      
                   </div>
                   <div class="hstats d-flex gap-3 flex-wrap mt-4">
-                     <div class="hstat"><span class="snum">30<em></em></span><small>Desain Web</small></div>
+                     <div class="hstat"><span class="snum"><?= $jumlah_template ?><em></em></span><small>Desain Web</small></div>
                      <div class="sdiv"></div>
                      <div class="hstat"><span class="snum">3<em></em></span><small>Paket Web</small></div>
                      <div class="sdiv"></div>
@@ -106,7 +136,7 @@
             <div class="mqitem"><i class="fas fa-circle"></i>SEO Friendly Website</div>
             <div class="mqitem"><i class="fas fa-circle"></i>Website Jadi 3-5 Hari</div>
             <div class="mqitem"><i class="fas fa-circle"></i>Gratis Domain & Hosting*</div>
-            <div class="mqitem"><i class="fas fa-circle"></i>Bikin Website Mulai 300rban</div>
+            <div class="mqitem"><i class="fas fa-circle"></i>Bikin Website Mulai 400rban</div>
             <div class="mqitem"><i class="fas fa-circle"></i>Cocok untuk UMKM & Bisnis</div>
             <div class="mqitem"><i class="fas fa-circle"></i>Tanpa Ribet, Tinggal Terima Jadi</div>
             <div class="mqitem"><i class="fas fa-circle"></i>Desain Modern & Responsive</div>
@@ -126,56 +156,68 @@
             <div class="row g-3 justify-content-center">
                <!-- All -->
                <div class="col-6 col-sm-4 col-md-3 col-lg-2" data-aos="zoom-in">
-                  <div class="catcard active" data-filter="all">
-                     <i class="fas fa-th-large" style="font-size:40px; color:#fa723d;"></i>
-                     <div class="catnm">All Items</div>
-                     <div class="catct">99 items</div>
+                  <a href="#about">
+                  <div class="catcard" data-filter="all">
+                     <i class="fas fa-list" style="font-size:40px; color:#fa723d;"></i>
+                     <div class="catnm">E-Katalog</div>
+                     <!-- <div class="catct">99 items</div> -->
                   </div>
+                  </a>
                </div>
 
                <!-- Landing Page -->
                <div class="col-6 col-sm-4 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="70">
+                  <a href="#about">
                   <div class="catcard" data-filter="landing">
-                     <i class="fas fa-bullseye" style="font-size:40px; color:#fa723d;"></i>
-                     <div class="catnm">Landing Page</div>
-                     <div class="catct">24 items</div>
+                     <i class="fas fa-seedling" style="font-size:40px; color:#fa723d;"></i>
+                     <div class="catnm">Profil Desa</div>
+                     <!-- <div class="catct">24 items</div> -->
                   </div>
+                  </a>
                </div>
 
                <!-- Homepage -->
                <div class="col-6 col-sm-4 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="140">
+                  <a href="#about">
                   <div class="catcard" data-filter="home">
-                     <i class="fas fa-home" style="font-size:40px; color:#fa723d;"></i>
+                     <i class="fas fa-tachometer-alt" style="font-size:40px; color:#fa723d;"></i>
                      <div class="catnm">Homepage</div>
-                     <div class="catct">18 items</div>
+                     <!-- <div class="catct">18 items</div> -->
                   </div>
+                  </a>
                </div>
 
                <!-- Portofolio -->
                <div class="col-6 col-sm-4 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="210">
+                  <a href="#about">
                   <div class="catcard" data-filter="portfolio">
                      <i class="fas fa-briefcase" style="font-size:40px; color:#fa723d;"></i>
                      <div class="catnm">Portofolio</div>
-                     <div class="catct">15 items</div>
+                     <!-- <div class="catct">15 items</div> -->
                   </div>
+                  </a>
                </div>
 
                <!-- E-Katalog -->
                <div class="col-6 col-sm-4 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="280">
+                  <a href="#about">
                   <div class="catcard" data-filter="catalog">
                      <i class="fas fa-shopping-cart" style="font-size:40px; color:#fa723d;"></i>
                      <div class="catnm">Toko Online</div>
-                     <div class="catct">12 items</div>
+                     <!-- <div class="catct">12 items</div> -->
                   </div>
+                  </a>
                </div>
 
                <!-- Company Profile -->
                <div class="col-6 col-sm-4 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="350">
+                  <a href="#about">
                   <div class="catcard" data-filter="company">
                      <i class="fas fa-building" style="font-size:40px; color:#fa723d;"></i>
                      <div class="catnm">Company Profile</div>
-                     <div class="catct">20 items</div>
+                     <!-- <div class="catct">20 items</div> -->
                   </div>
+                  </a>
                </div>
 
             </div>
@@ -201,35 +243,34 @@
             </div> -->
             <div class="row g-4" id="mgrid">
                <?php
-					$get_paket = mysqli_query($conn, "SELECT * FROM template_web order by id DESC LIMIT 6");
+					
 					while ($p = mysqli_fetch_array($get_paket)) {
 					?>
-               <div class="col-sm-6 col-lg-4 mwrap" data-c="burgers" data-aos="fade-up">
-                  <div class="mcard" style="border-top: 5px solid var(--primary)"
-                     data-img="./fotoweb/<?= $p['gambar_1'] ?>"
-                     data-title="Classic Smash Burger"
-                     data-cat="Burgers"
-                     data-price="$14.99" data-old="$18.99"
-                     data-rating="4.9" data-reviews="128"
-                     data-cal="620" data-time="12"
-                     data-desc="Double smashed patty, cheddar cheese, caramelized onions, house pickles and our legendary special sauce. Made fresh to order on a toasted brioche bun."
-                     data-tags="Spicy,Bestseller,Beef">
+               <div class="col-sm-6 col-lg-4 mwrap" data-c="<?= $p['halaman_isi'] ?>" data-aos="fade-up">
+                  <div class="mcard" style="border-top: 5px solid var(--primary); cursor: default;" data-img="./fotoweb/<?= $p['gambar_1'] ?>">
                      <div class="mimg">
                         <img src="./fotoweb/<?= $p['gambar_1'] ?>" alt="Smash Burger"/>
-                        <div class="mbdg new"><i class="fas fa-star"></i> Best Seller</div>
+                        <div class="mbdg hot"><i class="fas fa-star"></i> Best Seller</div>
                         <!-- <div class="mhrt"><i class="far fa-heart"></i></div> -->
                      </div>
                      <div class="mbody">
                         <!-- <div class="mcat"><?= $p['halaman_isi'] ?></div> -->
-                        <div class="mtit"><?= $p['judul'] ?></div>
+                        <div class="mtit"><a style="color: var(--dark);" href="./template-detail?id_web=<?= $p['id_web'] ?>"><?= $p['judul'] ?></a></div>
                         <div class="mdesc"><?= $p['halaman_isi'] ?></div>
                         <div class="mfoot">
-                           <div>
-                              <!-- <div class="mprice">Rp <?= number_format($p['harga']) ?> <small>$18.99</small></div> -->
-                              <div class="mprice">Rp <?= number_format($p['harga']) ?></div>
-                              <!-- <div class="mstars"><i class="fas fa-star"></i> <span style="color:#bbb;font-size:.7rem;">(128)</span></div> -->
+                           <div class="mprice">
+                              Rp <?= number_format($p['harga']) ?>
                            </div>
-                           <button class="madd" title="Preview"><i class="fa fa-external-link"></i></button>
+
+                           <div class="mactions">
+                              <a class="madd-2" target="_blank" title="Web Preview" href="<?= $p['link_url'] ?>">
+                                    <i class="fa fa-external-link"></i>
+                              </a>
+                              <a class="madd" title="Detail" href="./template-detail?id_web=<?= $p['id_web'] ?>">
+                                    <i class="fa fa-shopping-cart"></i>
+                              </a>
+
+                           </div>
                         </div>
                      </div>
                   </div>
@@ -237,7 +278,7 @@
                <?php } ?>
             </div>
             <!-- end #mgrid -->
-            <div class="text-center mt-5"><a href="#" class="btn-red">Lihat Semua Desain <i class="fas fa-arrow-right"></i></a></div>
+            <div class="text-center mt-5"><a href="./template-web" class="btn-red">Lihat Semua Desain <i class="fas fa-arrow-right"></i></a></div>
          </div>
       </section>
       <!-- ============================================================
@@ -245,7 +286,7 @@
          ============================================================ -->
       <section id="menu">
          <div class="container">
-            <div class="row align-items-center g-5">
+            <div class="row align-items-center">
                <div class="col-lg-5" data-aos="fade-right">
                   <div class="astack">
                      <!-- <div class="aexp"><span class="anum">12+</span><small>Years of<br/>Excellence</small></div> -->
@@ -319,7 +360,7 @@
       <section id="special">
          <div class="spbg"></div>
          <div class="container" style="position:relative;z-index:2;">
-            <div class="row align-items-center g-5">
+            <div class="row align-items-center">
 
                <!-- KIRI -->
                <div class="col-lg-6" data-aos="fade-right">
@@ -333,7 +374,7 @@
                   <h2 class="sptitle">
                      Website Profesional<br/>
                      Mulai dari <br/>
-                     <span>300 Ribuan</span>
+                     <span>400 Ribuan</span>
                   </h2>
 
                   <!-- Deskripsi -->
@@ -352,7 +393,7 @@
                   </div>
 
                   <!-- Button -->
-                  <a href="#chefs" class="btn-red">
+                  <a href="#chefs" class="btn-red btn-mulai">
                      Buat Website Sekarang <i class="fas fa-arrow-right"></i>
                   </a>
 
@@ -365,8 +406,8 @@
 
                      <!-- Harga Badge -->
                      <div class="sppbdg">
-                        <span class="old">Mulai</span>
-                        <span class="np">300rban</span>
+                        <span class="">Mulai</span>
+                        <span class="np">400rban</span>
                      </div>
 
                      <!-- GANTI GAMBAR -->
@@ -462,15 +503,16 @@
                   <div class="chcard" style="border-top: 9px solid #008c9c;">
                      <div class="chbody">
                         <div class="chnm">Paket Web Starter</div>
-                        <div class="chexp">1-2 halaman website untuk mulai <i>go digital</i></div>
-                        <div class="chnm mt-3">Rp. 380.000</div><hr>
-                        <div class="chexp"><i class="far fa-file-code"></i> 1-2 Halaman (Landing page)</div>
-                        <div class="chexp"><i class="fa fa-server"></i> Akses cPanel (Opsional)</div>
+                        <div class="chexp">1-3 halaman website untuk mulai <i>go digital</i></div>
+                        <div class="chnm mt-3">Rp. 470.000</div><hr>
+                        <div class="chexp"><i class="far fa-file-code"></i> 1-3 Halaman</div>
+                        <div class="chexp"><i class="fa fa-server"></i> Akses cPanel</div>
+                        <div class="chexp"><i class="fas fa-globe"></i> Gratis Hosting</div>
                         <div class="chexp"><i class="fas fa-edit"></i> Gratis Jasa Editing Web</div>
-                        <div class="chexp"><i class="fas fa-sync-alt"></i> Bebas revisi 2 minggu pertama</div>
+                        <div class="chexp"><i class="fas fa-sync-alt"></i> Bebas revisi 1 bulan pertama</div>
                         <div class="chexp"><i class="far fa-calendar-check"></i> Masa Aktif 1 tahun</div>
                         <hr>
-                        <a href="./template-web?filter=Landing page, 1-2 page" class="btn-red" style="width: 100%; justify-content: center;">Pilih Paket <i class="fas fa-arrow-right"></i></a> 
+                        <a href="./template-web?halaman_isi=Web%201" class="btn-red" style="width: 100%; justify-content: center;">Pilih Paket <i class="fas fa-arrow-right"></i></a> 
                      </div>
                   </div>
                </div>
@@ -478,15 +520,16 @@
                   <div class="chcard" style="border-top: 9px solid #cd0fb1;">
                      <div class="chbody">
                         <div class="chnm">Paket Web Plus</div>
-                        <div class="chexp">5-8 halaman website untuk mulai <i>go digital</i></div>
-                        <div class="chnm mt-3">Rp. 680.000</div><hr>
-                        <div class="chexp"><i class="far fa-file-code"></i> 5-8 Halaman (Homepage)</div>
-                        <div class="chexp"><i class="fa fa-server"></i> Akses cPanel (Opsional)</div>
+                        <div class="chexp">4-8 halaman website untuk mulai <i>go digital</i></div>
+                        <div class="chnm mt-3">Rp. 799.000</div><hr>
+                        <div class="chexp"><i class="far fa-file-code"></i> 4-8 Halaman (Homepage)</div>
+                        <div class="chexp"><i class="fa fa-server"></i> Akses cPanel</div>
+                        <div class="chexp"><i class="fas fa-globe"></i> Gratis Hosting</div>
                         <div class="chexp"><i class="fas fa-edit"></i> Gratis Jasa Editing Web</div>
-                        <div class="chexp"><i class="fas fa-sync-alt"></i> Bebas revisi 2 minggu pertama</div>
+                        <div class="chexp"><i class="fas fa-sync-alt"></i> Bebas revisi 1 bulan pertama</div>
                         <div class="chexp"><i class="far fa-calendar-check"></i> Masa Aktif 1 tahun</div>
                         <hr>
-                        <a href="./template-web?filter=Homepage, 5-8 page" class="btn-red" style="width: 100%; justify-content: center;">Pilih Paket <i class="fas fa-arrow-right"></i></a> 
+                        <a href="./template-web?halaman_isi=Web%204" class="btn-red" style="width: 100%; justify-content: center;">Pilih Paket <i class="fas fa-arrow-right"></i></a> 
                      </div>
                   </div>
                </div>
@@ -494,15 +537,16 @@
                   <div class="chcard" style="border-top: 9px solid #aec500;">
                      <div class="chbody">
                         <div class="chnm">Paket Web Max</div>
-                        <div class="chexp">10-15 halaman website untuk mulai <i>go digital</i></div>
-                        <div class="chnm mt-3">Rp. 1.180.000</div><hr>
-                        <div class="chexp"><i class="far fa-file-code"></i> 10-15 Halaman (Homepage)</div>
-                        <div class="chexp"><i class="fa fa-server"></i> Akses cPanel (Opsional)</div>
+                        <div class="chexp">9-15 halaman website untuk mulai <i>go digital</i></div>
+                        <div class="chnm mt-3">Rp. 1.299.000</div><hr>
+                        <div class="chexp"><i class="far fa-file-code"></i> 9-15 Halaman (Homepage)</div>
+                        <div class="chexp"><i class="fa fa-server"></i> Akses cPanel</div>
+                        <div class="chexp"><i class="fas fa-globe"></i> Gratis Hosting</div>
                         <div class="chexp"><i class="fas fa-edit"></i> Gratis Jasa Editing Web</div>
-                        <div class="chexp"><i class="fas fa-sync-alt"></i> Bebas revisi 2 minggu pertama</div>
+                        <div class="chexp"><i class="fas fa-sync-alt"></i> Bebas revisi 1 bulan pertama</div>
                         <div class="chexp"><i class="far fa-calendar-check"></i> Masa Aktif 1 tahun</div>
                         <hr>
-                        <a href="./template-web?filter=Homepage, 10-15 page" class="btn-red" style="width: 100%; justify-content: center;">Pilih Paket <i class="fas fa-arrow-right"></i></a> 
+                        <a href="./template-web?halaman_isi=Web%209" class="btn-red" style="width: 100%; justify-content: center;">Pilih Paket <i class="fas fa-arrow-right"></i></a> 
                      </div>
                   </div>
                </div>
@@ -527,7 +571,7 @@
                   <div class="tl-left">
                      <div class="tlyear">1.</div>
                      <h5>Konsultasi dengan kami</h5>
-                     <p>Anda akan diarahkan ke WhatsApp untuk konsultasi terkait pembuatan web dan memilih template yang sesuai atau bisa langsung mulai dari tahap kedua "Pilih Design Web".</p>
+                     <p>Anda akan diarahkan ke WhatsApp untuk konsultasi terkait pembuatan web dan memilih template yang sesuai atau bisa langsung mulai dari tahap kedua "Pilih Desain Web".</p>
                   </div>
                   <div class="tl-center">
                      <div class="tldot"></div>
@@ -535,7 +579,7 @@
                   <div class="tl-right">
                      <div class="tlyear">1.</div>
                      <h5>Konsultasi dengan kami</h5>
-                     <p>Anda akan diarahkan ke WhatsApp untuk konsultasi terkait pembuatan web dan memilih template yang sesuai atau bisa langsung mulai dari tahap kedua "Pilih Design Web".</p>
+                     <p>Anda akan diarahkan ke WhatsApp untuk konsultasi terkait pembuatan web dan memilih template yang sesuai atau bisa langsung mulai dari tahap kedua "Pilih Desain Web".</p>
                   </div>
                </div>
 
@@ -577,38 +621,54 @@
                <div class="tli">
                   <div class="tl-left">
                      <div class="tlyear">4.</div>
-                     <h5>Proses Pembayaran</h5>
-                     <p>Anda akan diarahkan kembali ke admin WhatsApp untuk proses pembayaran dan konfirmasi pesanan termasuk nama domain web yang diinginkan.</p>
+                     <h5>Mengisi Form Pemesanan</h5>
+                     <p>Pada halaman form pemesanan terdapat detail order web anda dan diharuskan mengisi form untuk lanjut ke pembayaran.</p>
                   </div>
                   <div class="tl-center">
                      <div class="tldot"></div>
                   </div>
                   <div class="tl-right">
                      <div class="tlyear">4.</div>
-                     <h5>Proses Pembayaran</h5>
-                     <p>Anda akan diarahkan kembali ke admin WhatsApp untuk proses pembayaran dan konfirmasi pesanan termasuk nama domain web yang diinginkan.</p>
+                     <h5>Mengisi Form Pemesanan</h5>
+                     <p>Pada halaman form pemesanan terdapat detail order web anda dan diharuskan mengisi form untuk lanjut ke pembayaran.</p>
                   </div>
                </div>
 
                <div class="tli">
                   <div class="tl-left">
                      <div class="tlyear">5.</div>
-                     <h5>Proses Pengerjaan</h5>
-                     <p>Admin akan mengarahkan untuk mendiskusikan kebutuhan, fitur, dan detail website bersama tim developer kami.</p>
+                     <h5>Proses Pembayaran</h5>
+                     <p>Anda akan mendapatkan nomor invoice dan diarahkan untuk konfirmasi ke admin zilaweb via WhatsApp untuk proses pembayaran dan konfirmasi pemesanan.</p>
                   </div>
                   <div class="tl-center">
                      <div class="tldot"></div>
                   </div>
                   <div class="tl-right">
                      <div class="tlyear">5.</div>
-                     <h5>Proses Pengerjaan</h5>
-                     <p>Admin akan mengarahkan untuk mendiskusikan kebutuhan, fitur, dan detail website bersama tim developer kami.</p>
+                      <h5>Proses Pembayaran</h5>
+                     <p>Anda akan mendapatkan nomor invoice dan diarahkan untuk konfirmasi ke admin zilaweb via WhatsApp untuk proses pembayaran dan konfirmasi pemesanan.</p>
                   </div>
                </div>
 
                <div class="tli">
                   <div class="tl-left">
                      <div class="tlyear">6.</div>
+                     <h5>Proses Pengerjaan</h5>
+                     <p>Setelah pembayaran di konfirmasi, admin akan mengarahkan untuk mendiskusikan kebutuhan, fitur, dan detail website bersama tim developer kami.</p>
+                  </div>
+                  <div class="tl-center">
+                     <div class="tldot"></div>
+                  </div>
+                  <div class="tl-right">
+                     <div class="tlyear">6.</div>
+                     <h5>Proses Pengerjaan</h5>
+                     <p>Setelah pembayaran di konfirmasi, admin akan mengarahkan untuk mendiskusikan kebutuhan, fitur, dan detail website bersama tim developer kami.</p>
+                  </div>
+               </div>
+
+               <div class="tli">
+                  <div class="tl-left">
+                     <div class="tlyear">7.</div>
                      <h5>Website Selesai dan Online</h5>
                      <p>Website selesai dikerjakan, dilakukan pengecekan, dan siap digunakan atau dipublikasikan.</p>
                   </div>
@@ -616,7 +676,7 @@
                      <div class="tldot"></div>
                   </div>
                   <div class="tl-right">
-                     <div class="tlyear">6.</div>
+                     <div class="tlyear">7.</div>
                      <h5>Website Selesai dan Online</h5>
                      <p>Website selesai dikerjakan, dilakukan pengecekan, dan siap digunakan atau dipublikasikan.</p>
                   </div>
@@ -626,7 +686,7 @@
       </section>
 	  
       <!-- TESTIMONIALS -->
-      <section id="testimonials">
+      <!-- <section id="testimonials">
          <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
                <span class="slbl">Testimoni</span>
@@ -695,13 +755,13 @@
                <div class="swiper-pagination mt-4" style="position:static;"></div>
             </div>
          </div>
-      </section>
+      </section> -->
 	  
       <!-- RESERVATION FORM -->
 
 	  
       <!-- BLOG -->
-      <section id="blog">
+      <!-- <section id="blog">
          <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
                <span class="slbl">Blog</span>
@@ -725,7 +785,7 @@
             </div>
          </div>
          <div class="text-center mt-5"><a href="./blog" class="btn-red">Lihat Semua Artikel <i class="fas fa-arrow-right"></i></a></div>
-      </section>
+      </section> -->
 	  
       
 

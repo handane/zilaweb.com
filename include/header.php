@@ -2,18 +2,18 @@
          <div class="container">
             <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
                <div class="top-contact d-flex flex-wrap">
-                  <span><i class="fas fa-phone-alt"></i>+62 85821175905</span>
-                  <span><i class="fas fa-envelope"></i>admin@zilaweb.com</span>
+                  <span class="atas"><i class="fab fa-whatsapp"></i>+62 85821175905</span>
+                  <span class="atas"><i class="fas fa-envelope"></i>admin@zilaweb.com</span>
                   <!-- <span><i class="fas fa-map-marker-alt"></i>42 Flavor Street, NY</span> -->
                </div>
-               <div class="d-flex align-items-center gap-3">
+               <div class="d-flex align-items-center gap-5">
                   <span class="ttag" style="color: #fff;"><i class="fas fa-fire me-1" style="color: #fff;"></i>buat webmu sekarang!</span>
                   <div class="tsoc">
                      <!-- <a href="#"><i class="fab fa-facebook-f"></i></a> -->
-                     <a href="#"><i class="fab fa-instagram"></i></a>
-                     <a href="#"><i class="fab fa-tiktok"></i></a>
+                     <a href="https://instagram.com/zilaweb.official" target="_blank"><i class="fab fa-instagram"></i></a>
+                     <a href=""><i class="fab fa-tiktok"></i></a>
                      <!-- <a href="#"><i class="fab fa-youtube"></i></a> -->
-                     <a href="#"><i class="fab fa-whatsapp"></i></a>
+                     <a href="https://wa.me/6285821175905" target="_blank"><i class="fab fa-whatsapp"></i></a>
                   </div>
                </div>
             </div>
@@ -21,7 +21,7 @@
       </div>
       <nav class="navbar navbar-expand-lg" id="nav">
          <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="./">
                <div class="blogo">
                   <img src="./img/zilaweb-banner.png" height="50px" alt="">
                </div>
@@ -36,17 +36,23 @@
                   <!-- <li class="nav-item"><a class="nav-link" href="#menu">Jasa Hosting</a></li> -->
                   <li class="nav-item"><a class="nav-link" href="./panduan">Panduan</a></li>
                   <li class="nav-item"><a class="nav-link" href="./blog">Blog</a></li>
-                  <li class="nav-item"><a class="nav-link" href="">FAQ</a></li>
+                  <li class="nav-item"><a class="nav-link" href="./faq">FAQ</a></li>
                </ul>
                <div class="d-flex align-items-center gap-1">
                   <!-- FIX 1: Search button -->
-                  <button id="navSearchBtn" title="Search"><i class="fas fa-search"></i></button>
-                  <a href="#menu" class="nav-link nav-cta"><i class="fab fa-whatsapp me-1"></i>Konsultasi Sekarang</a>
+                  <!-- <button id="navSearchBtn" title="Search"><i class="fas fa-search"></i></button> -->
+                  <a href="https://wa.me/6285821175905" 
+                     class="nav-link nav-cta" 
+                     target="_blank" 
+                     rel="noopener noreferrer">
+                     <i class="fab fa-whatsapp me-1"></i>
+                     Konsultasi Sekarang
+                  </a>
                </div>
             </div>
          </div>
       </nav>
-      <div id="searchOv">
+      <!-- <div id="searchOv">
          <button class="sovclose" id="searchClose"><i class="fas fa-times"></i></button>
          <div class="sovbox">
             <h4>What are you craving today?</h4>
@@ -87,4 +93,4 @@
                <span class="ttag">Mango Shake</span>
             </div>
          </div>
-      </div>
+      </div> -->

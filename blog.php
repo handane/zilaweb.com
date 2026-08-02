@@ -7,9 +7,19 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="author" content="Sarab">
-      <meta name="description" content="Sarab - Fast Food & Restaurant HTML Template">
-      <title>ZilaWeb</title>
+      
+      <title>Blog dan Artikel - ZilaWeb</title>
+
+      <meta name="title" content="Blog dan Artikel">
+      <meta name="description" content="Kumpulan artikel terbaru seputar pemrograman web, tips membuat website UMKM, dan teknologi digital dari ZilaWeb.">
+      <meta name="keywords" content="jasa pembuatan website, artikel, bikin website UMKM, blog, artikel pemrograman">
+      <meta name="robots" content="index, follow">
+      <meta name="author" content="ZilaWeb">
+
+      <link rel="icon" href="./assets/images/zilaweb-fav-32.png" sizes="32x32" type="image/png">
+      <link rel="icon" href="./assets/images/zilaweb-fav-192.png" sizes="192x192" type="image/png">
+      <link rel="apple-touch-icon" href="./assets/images/zilaweb-fav-192.png">
+
       <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet"/>
       <!-- Bootstrap 5.3 -->
       <link href="css/bootstrap.min.css" rel="stylesheet"/>
@@ -50,7 +60,7 @@
                <div class="sline"></div>
             </div>
             <div class="row g-4">
-               <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="160">
+               <!-- <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="160">
                   <div class="blcard">
                      <div class="blimg">
                         <div class="text-center mb-4">
@@ -64,7 +74,7 @@
                         <a href="./blog-detail" class="blmore">Read More <i class="fas fa-arrow-right"></i></a>
                      </div>
                   </div>
-               </div>
+               </div> -->
             </div>
          </div>
       </section>

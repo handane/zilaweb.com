@@ -1,5 +1,6 @@
 <?php 
    include("./koneksi.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,9 +8,20 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="author" content="Sarab">
-      <meta name="description" content="Sarab - Fast Food & Restaurant HTML Template">
-      <title>ZilaWeb</title>
+      
+      <title>Detail Artikel - ZilaWeb</title>
+      <!-- <title><?= $artikel['judul'] ?> - ZilaWeb</title>
+
+      <meta name="title" content="<?= $artikel['judul'] ?>">
+      <meta name="description" content="<?= substr(strip_tags($artikel['isi']), 0, 150) ?>">
+      <meta name="keywords" content="<?= $artikel['keyword'] ?>">
+      <meta name="robots" content="index, follow">
+      <meta name="author" content="ZilaWeb"> -->
+
+      <link rel="icon" href="./assets/images/zilaweb-fav-32.png" sizes="32x32" type="image/png">
+      <link rel="icon" href="./assets/images/zilaweb-fav-192.png" sizes="192x192" type="image/png">
+      <link rel="apple-touch-icon" href="./assets/images/zilaweb-fav-192.png">
+
       <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet"/>
       <!-- Bootstrap 5.3 -->
       <link href="css/bootstrap.min.css" rel="stylesheet"/>

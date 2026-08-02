@@ -1,5 +1,6 @@
 <?php 
    include("./koneksi.php");
+   $filter = $_GET['halaman_isi'] ?? '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,9 +8,18 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="author" content="Sarab">
-      <meta name="description" content="Sarab - Fast Food & Restaurant HTML Template">
-      <title>ZilaWeb</title>
+      
+      <title>Template Website - ZilaWeb</title>
+
+      <meta name="title" content="Template Website">
+      <meta name="description" content="Tersedia berbagai pilihan template website siap pakai dan buat websitemu dengan harga terjangkau mulai 400 ribuan di ZilaWeb.">
+      <meta name="robots" content="index, follow">
+      <meta name="author" content="ZilaWeb">
+
+      <link rel="icon" href="./assets/images/zilaweb-fav-32.png" sizes="32x32" type="image/png">
+      <link rel="icon" href="./assets/images/zilaweb-fav-192.png" sizes="192x192" type="image/png">
+      <link rel="apple-touch-icon" href="./assets/images/zilaweb-fav-192.png">
+
       <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet"/>
       <!-- Bootstrap 5.3 -->
       <link href="css/bootstrap.min.css" rel="stylesheet"/>
@@ -50,38 +60,78 @@
                <div class="sline"></div>
             </div>
             <!-- FIX 3 � filter buttons -->
-            <div class="text-center mb-4" data-aos="fade-up">
-               <button class="filtbtn active" data-f="all">Semua</button>
-               <button class="filtbtn" data-f="Landing page, 1-2 page">Web 1-2 Halaman</button>
-               <button class="filtbtn" data-f="Homepage, 5-8 page">Web 5-8 Halaman</button>
-               <button class="filtbtn" data-f="Homepage, 10-15 page">Web 10-15 Halaman</button>
+            <div class="mb-4 filt-wrapper">
+               <div class="filt-scroll">
+                  <a href="?" class="filtbtn <?= $filter == '' ? 'active' : '' ?>">Semua</a>
+                  <a href="?halaman_isi=Web 1" class="filtbtn <?= $filter == 'Web 1' ? 'active' : '' ?>">Web 1-3 Halaman</a>
+                  <a href="?halaman_isi=Web 4" class="filtbtn <?= $filter == 'Web 4' ? 'active' : '' ?>">Web 4-8 Halaman</a>
+                  <a href="?halaman_isi=Web 9" class="filtbtn <?= $filter == 'Web 9' ? 'active' : '' ?>">Web 9-15 Halaman</a>
+               </div>
             </div>
             
             <div class="row g-4" id="mgrid">
                <?php
-               $get_paket = mysqli_query($conn, "SELECT * FROM template_web ORDER BY id DESC");
+                  $halaman_isi = isset($_GET['halaman_isi']) ? mysqli_real_escape_string($conn, $_GET['halaman_isi']) : '';
 
-               while ($p = mysqli_fetch_array($get_paket)) {
+                  $limit = 9;
+                  $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+                  if ($page < 1) {
+                     $page = 1;
+                  }
+
+                  $offset = ($page - 1) * $limit;
+
+                  $where = "WHERE status = 'aktif'";
+                  if (!empty($halaman_isi)) {
+                     $where .= " AND halaman_isi LIKE '%$halaman_isi%'";
+                  }
+
+                  // Total data
+                  $total_query = mysqli_query($conn, "SELECT COUNT(*) as total
+                     FROM template_web
+                     $where
+                  ");
+
+                  $total_data = mysqli_fetch_assoc($total_query)['total'];
+
+                  // Ambil data
+                  $get_paket = mysqli_query($conn, "SELECT *
+                     FROM template_web
+                     $where
+                     ORDER BY id DESC
+                     LIMIT $limit OFFSET $offset
+                  ");
+
+                  $total_page = ceil($total_data / $limit);
+                  while ($p = mysqli_fetch_array($get_paket)) {
                ?>
                <div class="col-sm-6 col-lg-4 mwrap" data-c="<?= $p['halaman_isi'] ?>" data-aos="fade-up">
-                  <div class="mcard" style="border-top: 5px solid var(--primary)"
+                  <div class="mcard" style="cursor: default;"
                      data-img="./fotoweb/<?= $p['gambar_1'] ?>">
                      <div class="mimg">
                         <img src="./fotoweb/<?= $p['gambar_1'] ?>" alt="Smash Burger"/>
-                        <div class="mbdg new"><i class="fas fa-star"></i> Best Seller</div>
+                        <!-- <div class="mbdg new"><i class="fas fa-star"></i> Best Seller</div> -->
                         <!-- <div class="mhrt"><i class="far fa-heart"></i></div> -->
                      </div>
                      <div class="mbody">
                         <!-- <div class="mcat"><?= $p['halaman_isi'] ?></div> -->
-                        <div class="mtit"><?= $p['judul'] ?></div>
+                        <div class="mtit"><a style="color: var(--dark);" href="./template-detail?id_web=<?= $p['id_web'] ?>"><?= $p['judul'] ?></a></div>
                         <div class="mdesc"><?= $p['halaman_isi'] ?></div>
                         <div class="mfoot">
-                           <div>
-                              <!-- <div class="mprice">Rp <?= number_format($p['harga']) ?> <small>$18.99</small></div> -->
-                              <div class="mprice">Rp <?= number_format($p['harga']) ?></div>
-                              <!-- <div class="mstars"><i class="fas fa-star"></i> <span style="color:#bbb;font-size:.7rem;">(128)</span></div> -->
+                           <div class="mprice">
+                              Rp <?= number_format($p['harga']) ?>
                            </div>
-                           <button class="madd" title="Preview"><i class="fa fa-external-link"></i></button>
+
+                           <div class="mactions">
+                              <a class="madd-2" target="_blank" title="Web Preview" href="<?= $p['link_url'] ?>">
+                                    <i class="fa fa-external-link"></i>
+                              </a>
+                              <a class="madd" title="Detail" href="./template-detail?id_web=<?= $p['id_web'] ?>">
+                                    <i class="fa fa-shopping-cart"></i>
+                              </a>
+
+                           </div>
                         </div>
                      </div>
                   </div>
@@ -91,6 +141,36 @@
             <div class="d-flex justify-content-center mt-4">
 					<nav>
                   <ul class="pagination">
+                     <!-- Tombol Previous -->
+                     <?php if($page > 1){ ?>
+                        <li class="page-item">
+                           <a class="page-link"
+                              href="?page=<?= $page-1 ?><?= $halaman_isi!='' ? '&halaman_isi='.$halaman_isi : '' ?>">
+                                 &laquo;
+                           </a>
+                        </li>
+                     <?php } ?>
+
+                     <!-- Nomor Halaman -->
+                     <?php for($i=1; $i<=$total_page; $i++){ ?>
+                        <li class="page-item <?= ($i==$page)?'active':'' ?>">
+                           <a class="page-link"
+                              href="?page=<?= $i ?><?= $halaman_isi!='' ? '&halaman_isi='.$halaman_isi : '' ?>">
+                                 <?= $i ?>
+                           </a>
+                        </li>
+                     <?php } ?>
+
+                     <!-- Tombol Next -->
+                     <?php if($page < $total_page){ ?>
+                        <li class="page-item">
+                           <a class="page-link"
+                              href="?page=<?= $page+1 ?><?= $halaman_isi!='' ? '&halaman_isi='.$halaman_isi : '' ?>">
+                                 &raquo;
+                           </a>
+                        </li>
+                     <?php } ?>
+
                   </ul>
 					</nav>
 			   </div>
@@ -115,117 +195,6 @@
       
       <script src="js/main.js"></script>
       
-      <script>
-const itemsPerPage = 9; // jumlah item per halaman
-let currentPage = 1;
-let currentFilter = 'all';
-
-const allItems = Array.from(document.querySelectorAll('.mwrap'));
-const pagination = document.querySelector('.pagination');
-
-// FILTER BUTTON
-document.querySelectorAll('.filtbtn').forEach(btn => {
-    btn.addEventListener('click', function () {
-        document.querySelectorAll('.filtbtn').forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-
-        currentFilter = this.dataset.f;
-        currentPage = 1;
-
-        render();
-    });
-});
-
-// FILTER LOGIC
-function getFilteredItems() {
-    if (currentFilter === 'all') return allItems;
-
-    return allItems.filter(item => {
-        const c = item.dataset.c.toLowerCase();
-        const f = currentFilter.toLowerCase();
-
-        return c.includes(f);
-    });
-}
-
-// RENDER ITEMS
-function render() {
-    const filtered = getFilteredItems();
-
-    // sembunyikan semua
-    allItems.forEach(item => item.style.display = 'none');
-
-    // pagination hitung
-    const start = (currentPage - 1) * itemsPerPage;
-    const end = start + itemsPerPage;
-
-    const pageItems = filtered.slice(start, end);
-
-    // tampilkan
-    pageItems.forEach(item => item.style.display = 'block');
-
-    renderPagination(filtered.length);
-}
-
-// PAGINATION
-function renderPagination(totalItems) {
-    pagination.innerHTML = '';
-    const totalPages = Math.ceil(totalItems / itemsPerPage);
-
-    if (totalPages <= 1) return;
-
-    // prev
-    if (currentPage > 1) {
-        pagination.innerHTML += `
-        <li class="page-item">
-            <a class="page-link" href="#" onclick="goPage(${currentPage - 1})">&laquo;</a>
-        </li>`;
-    }
-
-    for (let i = 1; i <= totalPages; i++) {
-        pagination.innerHTML += `
-        <li class="page-item ${i === currentPage ? 'active' : ''}">
-            <a class="page-link" href="#" onclick="goPage(${i})">${i}</a>
-        </li>`;
-    }
-
-    // next
-    if (currentPage < totalPages) {
-        pagination.innerHTML += `
-        <li class="page-item">
-            <a class="page-link" href="#" onclick="goPage(${currentPage + 1})">&raquo;</a>
-        </li>`;
-    }
-}
-
-// PINDAH HALAMAN
-function goPage(page) {
-    currentPage = page;
-    render();
-}
-
-// INIT
-render();
-</script>
-<script>
-const urlParams = new URLSearchParams(window.location.search);
-const filterFromURL = urlParams.get('filter');
-
-if (filterFromURL) {
-    currentFilter = filterFromURL.toLowerCase();
-
-    // aktifkan tombol (kalau masih dipakai)
-    document.querySelectorAll('.filtbtn').forEach(btn => {
-        btn.classList.remove('active');
-
-        if (btn.dataset.f.toLowerCase() === currentFilter) {
-            btn.classList.add('active');
-        }
-    });
-}
-
-// jalankan ulang render
-render();
-</script>
+      
    </body>
 </html>
